@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".auth.joinActivity"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@color/mainColor">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="meetrip"
+                android:textColor="#ffffff"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/emailArea"
+                android:layout_width="match_parent"
+                android:hint="이메일"
+                android:layout_marginHorizontal="40dp"
+                android:layout_height="50dp"/>
+
+            <EditText
+                android:id="@+id/passwordArea1"
+                android:layout_width="match_parent"
+                android:hint="비밀번호"
+                android:layout_marginHorizontal="40dp"
+                android:layout_height="50dp"
+                android:inputType="textPassword"/>
+
+            <EditText
+                android:id="@+id/passwordArea2"
+                android:layout_width="match_parent"
+                android:hint="비밀번호 확인"
+                android:layout_marginHorizontal="40dp"
+                android:layout_height="50dp"
+                android:inputType="textPassword"/>
+
+            <Button
+                android:id="@+id/joinBtn"
+                android:text="회원가입"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:layout_margin="40dp"
+                android:background="@drawable/radius_maincolor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>
