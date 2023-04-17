@@ -1,0 +1,15 @@
+package com.example.meetrip2.utils
+
+import com.google.firebase.auth.FirebaseAuth
+
+class FBAuth {
+    companion object{
+        private lateinit var auth: FirebaseAuth
+
+        fun getUid() : String{
+            auth = FirebaseAuth.getInstance()
+
+            return auth.currentUser?.uid.toString()
+        }
+    }
+}
