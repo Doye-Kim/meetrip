@@ -18,9 +18,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#345E86"
-        app:itemIconTint="#FFFFFF"
-        app:itemTextColor="#f6d170"
+        android:background="@color/mainColor"
+        app:itemIconTint="#ffffff"
+        app:itemTextColor="#ffffff"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_menu"/>
 
