@@ -56,10 +56,10 @@ class ContentsRVAdapter(val context : Context,
             val bookmarkArea = itemView.findViewById<ImageView>(R.id.bookmarkArea)
 
             if(bookmarkIdList.contains(key)){
-                bookmarkArea.setImageResource(R.drawable.baseline_bookmark_24)
+                bookmarkArea.setImageResource(R.drawable.bookmarkfill)
             }
             else {
-                bookmarkArea.setImageResource(R.drawable.baseline_bookmark_border_24)
+                bookmarkArea.setImageResource(R.drawable.bookmark3)
             }
             bookmarkArea.setOnClickListener{
                 Log.d("ContentsRVAdapter", FBAuth.getUid())

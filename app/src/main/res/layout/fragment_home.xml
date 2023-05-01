@@ -24,14 +24,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
-                    android:src="@drawable/mountain_img"
+                    android:src="@drawable/img1"
                     android:layout_width="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="10dp"
                     android:scaleType="centerCrop"
                     android:layout_height="300dp"/>
                 <ImageView
-                    android:src="@drawable/river_img"
+                    android:src="@drawable/img2"
                     android:layout_weight="1"
                     android:layout_margin="10dp"
                     android:scaleType="centerCrop"

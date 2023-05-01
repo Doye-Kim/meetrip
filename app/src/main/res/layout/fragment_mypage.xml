@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffff"
@@ -31,24 +30,76 @@
                 android:layout_height="wrap_content"/>
             <TextView
                 android:layout_width="wrap_content"
-                android:text="포인트"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="10dp"
+                android:text="500p"
+                android:layout_marginLeft="15dp"
                 android:textSize="20sp"
-                android:textStyle="bold"
+
                 android:layout_height="wrap_content"/>
         </LinearLayout>
 
-        <Button
-            android:id="@+id/logoutBtn"
-            android:text="LOGOUT"
-            android:textStyle="bold"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/menuBtn"
+            android:layout_width="50dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="10dp"
             android:layout_alignParentRight="true"
-            android:background="@drawable/radius_white"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="10dp"/>
+            android:src="@drawable/baseline_menu_24"
+            tools:ignore="InvalidId" />
+
+        <LinearLayout
+            android:visibility="gone"
+            android:background="@drawable/radius_menu"
+            android:id="@+id/menuBar"
+            android:layout_width="350dp"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="Settings"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:textSize="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/edit"
+                android:text="내 정보 수정"
+                android:textSize="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/noti"
+                android:text="알림"
+                android:textSize="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/service"
+                android:text="고객센터"
+                android:textSize="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+                <Button
+                    android:id="@+id/logoutBtn"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/radius_white"
+                    android:text="LOGOUT"
+                    android:textStyle="bold" />
+        </LinearLayout>
+
     </RelativeLayout>
 
 <!--    <LinearLayout-->
