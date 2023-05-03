@@ -3,6 +3,8 @@ package com.example.meetrip2.auth
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.View.VISIBLE
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.meetrip2.MainActivity
@@ -31,13 +33,12 @@ class LoginActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         finish()
                         // Sign in success, update UI with the signed-in user's information
-                        Toast.makeText(this,"login success", Toast.LENGTH_LONG).show()
                         val intent = Intent(this, MainActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                         startActivity(intent)
                     } else {
-                        Toast.makeText(this,"login fail", Toast.LENGTH_LONG).show()
 
+                        binding.noMatchAlert.visibility = View.VISIBLE
                     }
                 }
             }
