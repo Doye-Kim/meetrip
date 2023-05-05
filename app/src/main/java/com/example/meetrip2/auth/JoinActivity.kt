@@ -64,7 +64,6 @@ class JoinActivity : AppCompatActivity() {
                     .addOnCompleteListener(this){ task ->
                         if(task.isSuccessful){
                             finish()
-                            Toast.makeText(this, "성공", Toast.LENGTH_LONG).show()
                             val intent = Intent(this, MainActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                             startActivity(intent)
