@@ -76,9 +76,7 @@ class ContentsRVAdapter(val context : Context,
                         .child(key)
                         .setValue(BookmarkModel(true));
                 }
-
             }
-
             contentsTitle.text = item.title
 
             Glide.with(context)
@@ -87,6 +85,4 @@ class ContentsRVAdapter(val context : Context,
 
         }
     }
-
-
 }

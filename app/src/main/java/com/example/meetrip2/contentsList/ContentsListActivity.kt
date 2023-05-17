@@ -28,14 +28,14 @@ class ContentsListActivity : AppCompatActivity() {
 
         val items = ArrayList<ContentsModel>()
         val database = Firebase.database
-        myRef = database.getReference("contents")
+        myRef = database.getReference("contents2")
         val itemKeyList = ArrayList<String>()
 
         rvAdapter = ContentsRVAdapter(baseContext, items, itemKeyList, bookmarkIdList)
 
 
-//        myRef.push().setValue(ContentsModel("mountain", "https://64.media.tumblr.com/e746384d214dcc8240d5e898ce871db8/tumblr_ng37kbjFNO1qfirfao1_1280.jpg"))
-//        myRef.push().setValue(ContentsModel("river", "https://64.media.tumblr.com/76e0830e214ebdef7cead2769697035e/tumblr_nsoc5ikBbb1qfirfao1_1280.jpg"))
+//        myRef.push().setValue(ContentsModel("다대포해수욕장", "https://postfiles.pstatic.net/MjAyMzA1MDFfNTIg/MDAxNjgyOTE5MDAwMTUy.yqy-vhuGMwThPTo9kxO7u9UX3MIvJ4oSaeafQFmD8kYg.vZdvf8Pak8GteB8rPM-Zl8UJ0XUfZJcuWYurobNYtrgg.JPEG.kmdy125/IMG-3694.jpg?type=w580"))
+//        myRef.push().setValue(ContentsModel("화명생태공원", "https://postfiles.pstatic.net/MjAyMzA1MDFfMjU0/MDAxNjgyOTE4OTY3NzYw.SkmSgLuo9StXgoRSWcyQwqegGT-WAJKKdZ-LYtcaXTwg.tGxjGeLtjea_q7sFU6gj4DVRncY_zIxF-7I31_HeOCUg.JPEG.kmdy125/IMG_9154.jpg?type=w580"))
 
 
         // Read from the database
@@ -72,7 +72,7 @@ class ContentsListActivity : AppCompatActivity() {
                 for(dataModel in dataSnapshot.children){
                     bookmarkIdList.add(dataModel.key.toString())
                 }
-                Log.d("ContentsListActivity", bookmarkIdList.toString())
+                Log.d("ContentsListActivitybookmarklist", bookmarkIdList.toString())
                 rvAdapter.notifyDataSetChanged()
             }
 
