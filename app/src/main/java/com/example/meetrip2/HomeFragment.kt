@@ -27,10 +27,10 @@ class HomeFragment : Fragment() {
             val intent = Intent(context, ContentsListActivity::class.java)
             startActivity(intent)
         }
-//        binding.cmView.setOnClickListener{
-//            val intent = Intent(context, CommunityActivity::class.java)
-//            startActivity(intent)
-//        }
+        binding.cmView.setOnClickListener{
+            val intent = Intent(context, CommunityActivity::class.java)
+            startActivity(intent)
+        }
         return binding.root
     }
 
