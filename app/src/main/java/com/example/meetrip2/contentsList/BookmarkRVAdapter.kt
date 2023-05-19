@@ -63,25 +63,15 @@ class BookmarkRVAdapter(val context : Context,
 
             if (bookmarkIdList.contains(key)) {
                 bookmarkArea.setImageResource(R.drawable.bookmarkfill)
-            } else {
-                bookmarkArea.setImageResource(R.drawable.bookmark3)
             }
-//            bookmarkArea.setOnClickListener {
-//                Log.d("ContentsRVAdapter", FBAuth.getUid())
-//                Toast.makeText(context, key, Toast.LENGTH_LONG).show()
-//                if (bookmarkIdList.contains(key)) { //이미 북마크 되어 있을 때
-//                    FBRef.bookmarkRef
-//                        .child(FBAuth.getUid())
-//                        .child(key)
-//                        .removeValue()
-//                } else { // 북마크 안 되어 있을 때
-//                    FBRef.bookmarkRef
-//                        .child(FBAuth.getUid())
-//                        .child(key)
-//                        .setValue(BookmarkModel(true));
-//                }
-//
-//            }
+           bookmarkArea.setOnClickListener {
+                Log.d("BookmarkRVAdapter", FBAuth.getUid())
+                Toast.makeText(context, key, Toast.LENGTH_LONG).show()
+                    FBRef.bookmarkRef
+                        .child(FBAuth.getUid())
+                        .child(key)
+                        .removeValue()
+            }
 
             contentsTitle.text = item.title
 
