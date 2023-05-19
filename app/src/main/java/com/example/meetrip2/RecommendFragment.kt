@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.Response
 
 class RecommendFragment : Fragment() {
     override fun onCreateView(
@@ -18,6 +19,7 @@ class RecommendFragment : Fragment() {
         try {
             Thread {
                 val client = OkHttpClient()
+                val response: Response
 
                 val request = Request.Builder()
                     .url("https://apis.openapi.sk.com/puzzle/travel?type=sig")
@@ -26,7 +28,7 @@ class RecommendFragment : Fragment() {
                     .addHeader("appkey", "KaJbwjBlgh1ON8VMvULcl4HvD06jHwEe13oh4pFa")
                     .build()
 
-                val response = client.newCall(request).execute()
+                response = client.newCall(request).execute()
                 Log.d("!", response.toString())
             }.start()
         }
