@@ -63,7 +63,6 @@ class IntroActivity : AppCompatActivity(){
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == RC_SIGN_IN) {
-            Log.d(TAG, "같음!!!!!!!!!")
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)!!
