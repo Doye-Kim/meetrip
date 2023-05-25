@@ -1,5 +1,6 @@
 package com.example.meetrip2
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,8 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.example.meetrip2.contentsList.ContentsListActivity
 import com.example.meetrip2.databinding.FragmentHomeBinding
 import com.example.meetrip2.databinding.FragmentRecommendBinding
+import com.example.meetrip2.recommend.RecommendContentActivity
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
@@ -27,6 +30,12 @@ class RecommendFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_recommend, container, false)
+
+        binding.testBtn.setOnClickListener{
+            val intent = Intent(context, RecommendContentActivity::class.java)
+            startActivity(intent)
+        }
+/*
         val key = "jlfu7ZHfaDOrClksoEtP9SYsAgKhF%2FUWNkhnhHkgi3YiK2eY30WQKZSZxBz0v8Jo7KcMTrccAbK41XlHUzXh2w%3D%3D"
         // 현재 페이지번호
         val startYmd = "&startYmd=20230101"
@@ -75,9 +84,11 @@ class RecommendFragment : Fragment() {
 //            .build()
 //
 //        val response1 = client.newCall(request1).execute()
+*/
 
         return binding.root
     }
+    /*
     class NetworkThread( var url: String): Runnable{
         override fun run() {
             try{
@@ -107,4 +118,6 @@ class RecommendFragment : Fragment() {
             }
         }
     }
+
+     */
 }

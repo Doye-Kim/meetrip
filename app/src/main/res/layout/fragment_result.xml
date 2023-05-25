@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".recommend.ResultFragment"
+        android:background="@color/mainColor">
+
+        <!-- TODO: Update blank fragment layout -->
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/re1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="result"
+                android:textSize="50sp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/re2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="result"
+                android:textSize="50sp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/re3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="result"
+                android:textSize="50sp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/re4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="result"
+                android:textSize="50sp"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+</layout>

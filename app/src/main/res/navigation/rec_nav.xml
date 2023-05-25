@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rec_nav"
+    app:startDestination="@id/test1Fragment">
+
+    <fragment
+        android:id="@+id/test1Fragment"
+        android:name="com.example.meetrip2.recommend.Test1Fragment"
+        android:label="fragment_test1"
+        tools:layout="@layout/fragment_test1" >
+        <action
+            android:id="@+id/action_test1Fragment_to_test2Fragment"
+            app:destination="@id/test2Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/test2Fragment"
+        android:name="com.example.meetrip2.recommend.Test2Fragment"
+        android:label="fragment_test2"
+        tools:layout="@layout/fragment_test2" >
+        <action
+            android:id="@+id/action_test2Fragment_to_test3Fragment"
+            app:destination="@id/test3Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/test3Fragment"
+        android:name="com.example.meetrip2.recommend.Test3Fragment"
+        android:label="fragment_test3"
+        tools:layout="@layout/fragment_test3" >
+        <action
+            android:id="@+id/action_test3Fragment_to_test4Fragment"
+            app:destination="@id/test4Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/test4Fragment"
+        android:name="com.example.meetrip2.recommend.Test4Fragment"
+        android:label="fragment_test4"
+        tools:layout="@layout/fragment_test4" >
+        <action
+            android:id="@+id/action_test4Fragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.example.meetrip2.recommend.ResultFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" />
+</navigation>
