@@ -11,18 +11,15 @@ import androidx.fragment.app.Fragment
 import com.example.meetrip2.contentsList.ContentsListActivity
 import com.example.meetrip2.databinding.FragmentHomeBinding
 import com.example.meetrip2.databinding.FragmentRecommendBinding
-<<<<<<< HEAD
 import com.example.meetrip2.recommend.RecommendContentActivity
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
-=======
 import com.example.meetrip2.utils.FBRef
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import okhttp3.*
->>>>>>> 9691d0f5d88b6a9fc395350ec363c64d8d507a27
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 import org.w3c.dom.Node
@@ -39,7 +36,6 @@ class RecommendFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_recommend, container, false)
-<<<<<<< HEAD
 
         binding.testBtn.setOnClickListener{
             val intent = Intent(context, RecommendContentActivity::class.java)
@@ -102,7 +98,6 @@ class RecommendFragment : Fragment() {
 
         return binding.root
     }
-<<<<<<< HEAD
     /*
     class NetworkThread( var url: String): Runnable{
         override fun run() {
@@ -135,7 +130,6 @@ class RecommendFragment : Fragment() {
     }
 
      */
-=======
 //    class NetworkThread( var url: String): Runnable{
 //        override fun run() {
 //            try{
@@ -165,5 +159,4 @@ class RecommendFragment : Fragment() {
 //            }
 //        }
 //    }
->>>>>>> 9691d0f5d88b6a9fc395350ec363c64d8d507a27
 }
