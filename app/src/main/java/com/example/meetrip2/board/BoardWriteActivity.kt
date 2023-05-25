@@ -3,6 +3,7 @@ package com.example.meetrip2.board
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.meetrip2.R
 import com.example.meetrip2.databinding.ActivityBoardWriteBinding
@@ -22,14 +23,20 @@ class BoardWriteActivity : AppCompatActivity() {
         binding.writeBtn.setOnClickListener{
             val title = binding.titleArea.text.toString()
             val content = binding.contentArea.text.toString()
+            val uid = FBAuth.getUid()
+            val time = FBAuth.getTime()
 
             Log.d(TAG, title)
             Log.d(TAG, content)
 
-//            FBRef.boardRef
-//                .child(FBAuth.getUid())
-//                .child
-//                .setValue(board)
+
+            FBRef.boardRef
+                .push()
+                .setValue(BoardModel(title, content, uid, time))
+
+            Toast.makeText(this, "입력 완", Toast.LENGTH_SHORT).show()
+
+            finish()
         }
     }
 }

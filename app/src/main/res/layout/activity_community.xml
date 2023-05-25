@@ -6,6 +6,7 @@
         android:layout_height="match_parent"
         tools:context=".RecommendFragment">
         <RelativeLayout
+            android:id="@+id/title"
             android:background="@color/mainDeep"
             android:layout_width="match_parent"
             android:layout_height="55dp">
@@ -38,6 +39,11 @@
                 android:layout_alignParentRight="true"
                 android:layout_height="40dp"/>
         </RelativeLayout>
+        <ListView
+            android:id="@+id/boardListView"
+            android:layout_below="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
         <LinearLayout
             android:id="@+id/writeBtn"
             android:layout_width="150dp"
@@ -45,7 +51,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:orientation="horizontal"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="20dp"
             android:layout_height="wrap_content">
             <ImageView
                 android:src="@drawable/edit2"
