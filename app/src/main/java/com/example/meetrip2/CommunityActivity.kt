@@ -21,6 +21,7 @@ class CommunityActivity : AppCompatActivity() {
     private lateinit var binding : ActivityCommunityBinding
     private val boardDataList = mutableListOf<BoardModel>()
     private val TAG = CommunityActivity::class.java.toString()
+    private val boardKeyList = mutableListOf<String>()
     private lateinit var boardLVadapter : BoardListLVAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,10 +33,14 @@ class CommunityActivity : AppCompatActivity() {
         binding.boardListView.adapter = boardLVadapter
 
         binding.boardListView.setOnItemClickListener{ parent, view, position, id ->
+//            val intent = Intent(this, BoardInsideActivity::class.java)
+//            intent.putExtra("title", boardDataList[position].title)
+//            intent.putExtra("content", boardDataList[position].content)
+//            intent.putExtra("time", boardDataList[position].time)
+//            startActivity(intent)
+
             val intent = Intent(this, BoardInsideActivity::class.java)
-            intent.putExtra("title", boardDataList[position].title)
-            intent.putExtra("content", boardDataList[position].content)
-            intent.putExtra("time", boardDataList[position].time)
+            intent.putExtra("key", boardKeyList[position])
             startActivity(intent)
         }
 
@@ -50,13 +55,16 @@ class CommunityActivity : AppCompatActivity() {
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 boardDataList.clear()
+                boardKeyList.clear()
                 for(dataModel in dataSnapshot.children){
                     val item = dataModel.getValue(BoardModel::class.java)
                     boardDataList.add(item!!)
+                    boardKeyList.add(dataModel.key.toString())
+
                 }
+                boardKeyList.reverse()
                 boardDataList.reverse()
                 boardLVadapter.notifyDataSetChanged()
-                Log.d(TAG, boardDataList.toString())
             }
 
             override fun onCancelled(error: DatabaseError) {
