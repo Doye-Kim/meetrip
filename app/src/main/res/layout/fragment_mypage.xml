@@ -1,134 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
+<layout
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ffffff"
-        tools:context=".MypageFragment">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profileImg"
-            android:layout_margin="10dp"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/ham" />
-
         <LinearLayout
-            android:layout_toRightOf="@+id/profileImg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="닉네임"
-                android:layout_margin="10dp"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="500p"
-                android:layout_marginLeft="15dp"
-                android:textSize="20sp"
-
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/menuBtn"
-            android:layout_width="50dp"
-            android:layout_height="60dp"
-            android:layout_marginRight="10dp"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/baseline_menu_24"
-            tools:ignore="InvalidId" />
-
-        <LinearLayout
-            android:visibility="gone"
-            android:background="@drawable/radius_menu"
-            android:id="@+id/menuBar"
-            android:layout_width="350dp"
-            android:layout_alignParentRight="true"
+            android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_height="match_parent">
-            <TextView
-                android:text="Settings"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
-                android:textSize="30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/edit"
-                android:text="내 정보 수정"
-                android:textSize="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/noti"
-                android:text="알림"
-                android:textSize="20dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/service"
-                android:text="고객센터"
-                android:textSize="20dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-                <Button
-                    android:id="@+id/logoutBtn"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/radius_white"
-                    android:text="LOGOUT"
-                    android:textStyle="bold" />
-        </LinearLayout>
-
-    </RelativeLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:text="bookmark"
-        android:textSize="20dp"
-        android:layout_margin="10dp"
-        android:textStyle="bold"
-        android:layout_height="wrap_content"/>
-        <View
-            android:background="@color/black"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"/>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="60dp">
-            <androidx.recyclerview.widget.RecyclerView
-                tools:context=".BookmarkFragment"
-                android:id="@+id/bookmarkRV"
+            <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <TextView
+                    android:id="@+id/clicktest"
+                    android:text="마이페이지"
+                    android:textColor="@color/black"
+                    android:textSize="25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:textStyle="bold"
+                    android:layout_width="350dp"
+                    android:layout_height="50dp"/>
+                <ImageView
+                    android:id="@+id/settingBtn"
+                    android:layout_width="50dp"
+                    android:layout_height="fill_parent"
+                    android:src="@drawable/setting_icon" />
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                tools:context=".MypageFragment">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profileImg"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/ham" />
+
+                <LinearLayout
+                    android:layout_toRightOf="@+id/profileImg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="닉네임"
+                        android:layout_marginTop="20dp"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="500p"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="20sp"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/notiIcon"
+                        android:src="@drawable/notification_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="알림"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:layout_alignBottom="@+id/notiIcon"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+                <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
                 android:layout_height="wrap_content">
-            </androidx.recyclerview.widget.RecyclerView>
-        </ScrollView>
+                <ImageView
+                    android:padding="17dp"
+                    android:id="@+id/writeIcon"
+                    android:src="@drawable/write_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:text="내가 쓴 글"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:layout_alignBottom="@+id/writeIcon"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:padding="15dp"
+                        android:id="@+id/likeIcon"
+                        android:src="@drawable/like_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+                    <TextView
+                        android:text="좋아요"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:layout_alignBottom="@+id/likeIcon"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:text="bookmark"
+                android:textSize="20dp"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"/>
+            <View
+                android:background="@color/black"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"/>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="60dp">
+                <androidx.recyclerview.widget.RecyclerView
+                    tools:context=".BookmarkFragment"
+                    android:id="@+id/bookmarkRV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </ScrollView>
     </LinearLayout>
 </layout>

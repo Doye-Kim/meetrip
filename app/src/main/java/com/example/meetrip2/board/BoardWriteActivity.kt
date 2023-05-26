@@ -57,7 +57,6 @@ class BoardWriteActivity : AppCompatActivity() {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, 100)
             isImageUpload = true
-
         }
     }
     private fun imageUpload(key: String){
