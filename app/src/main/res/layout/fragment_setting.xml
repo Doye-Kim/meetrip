@@ -1,13 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".SettingFragment">
-
-    <TextView
+    <ImageView
+        android:id="@+id/backBtn"
+        android:src="@drawable/back_icon"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="10dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"/>
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
-</FrameLayout>
+        android:layout_height="match_parent">
+        <View
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+         <TextView
+             android:textColor="@color/black"
+             android:textSize="20sp"
+             android:layout_marginTop="10dp"
+             android:layout_marginBottom="10dp"
+             android:layout_marginLeft="20dp"
+             android:layout_marginRight="70dp"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:id="@+id/editInfo"
+             android:text="내 정보 수정"/>
+        <TextView
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="70dp"
+            android:id="@+id/managePoint"
+            android:text="포인트 관리"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"/>
+        <LinearLayout
+            android:layout_margin="5dp"
+            android:background="@drawable/radius_setting"
+            android:layout_width="match_parent"
+            android:layout_height="7dp"/>
+        <TextView
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="70dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/announcement"
+            android:text="공지사항"/>
+        <TextView
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="70dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/serviceCenter"
+            android:text="고객센터"/>
+        <LinearLayout
+            android:layout_margin="5dp"
+            android:background="@drawable/radius_setting"
+            android:layout_width="match_parent"
+            android:layout_height="7dp"/>
+        <TextView
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="70dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/logout"
+            android:text="로그아웃"/>
+        <TextView
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="70dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/leave"
+            android:text="탈퇴하기"/>
+    </LinearLayout>
+</RelativeLayout>
+</layout>

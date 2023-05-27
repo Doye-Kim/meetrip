@@ -34,12 +34,10 @@ class MypageFragment : Fragment() {
     val itemKeyList = ArrayList<String>()
     lateinit var rvAdapter: BookmarkRVAdapter
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-
 
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_mypage, container, false)
@@ -47,9 +45,6 @@ class MypageFragment : Fragment() {
         val database = Firebase.database
         myRef = database.getReference("contents2")
         getBookmarkData()
-        binding.settingBtn.setOnClickListener{
-            Toast.makeText(context, "클릭", Toast.LENGTH_SHORT).show()
-        }
         // 컨텐츠 중 북마크 한 것만 보여주기
         rvAdapter = BookmarkRVAdapter(requireContext(), items, itemKeyList, bookmarkIDList)
 

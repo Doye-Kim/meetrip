@@ -14,6 +14,7 @@ import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.example.meetrip2.R
 import com.example.meetrip2.databinding.ActivityBoardInsideBinding
+import com.example.meetrip2.utils.FBAuth
 import com.example.meetrip2.utils.FBRef
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.database.DataSnapshot
@@ -71,6 +72,13 @@ class BoardInsideActivity : AppCompatActivity() {
                     binding.titleArea.text = dataModel!!.title
                     binding.contentArea.text = dataModel!!.content
                     binding.timeArea.text = dataModel!!.time
+
+                    val myUid = FBAuth.getUid()
+                    val writerUid = dataModel.uid
+
+                    if(myUid.equals(writerUid)){
+                        binding.menuBtn.visibility = View.VISIBLE
+                    }
                 }catch(e : Exception){
                     Log.d(TAG, "삭제 완료")
                 }
