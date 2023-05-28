@@ -19,7 +19,7 @@
             android:name=".board.BoardEditActivity"
             android:exported="false" />
         <activity
-            android:name=".recommend.RecommendContentActivity"
+            android:name=".recommend_test.RecommendContentActivity"
             android:exported="false" />
         <activity
             android:name=".board.BoardInsideActivity"

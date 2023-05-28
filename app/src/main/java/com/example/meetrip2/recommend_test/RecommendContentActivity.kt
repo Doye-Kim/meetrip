@@ -1,4 +1,4 @@
-package com.example.meetrip2.recommend
+package com.example.meetrip2.recommend_test
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

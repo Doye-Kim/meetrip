@@ -1,4 +1,4 @@
-package com.example.meetrip2.recommend
+package com.example.meetrip2.recommend_test
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
