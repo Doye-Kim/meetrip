@@ -14,6 +14,7 @@ class FBRef {
         val boardRef = database.getReference("board")
 
         val recommendRef = database.getReference("rec_contents")
+        val commentRef = database.getReference("comment")
 
     }
 }

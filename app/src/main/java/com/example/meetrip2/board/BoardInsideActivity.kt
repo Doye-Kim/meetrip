@@ -1,7 +1,7 @@
 package com.example.meetrip2.board
 
-import android.content.Context
 import android.content.Intent
+import com.example.meetrip2.R
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,7 +12,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
-import com.example.meetrip2.R
+import com.example.meetrip2.comment.CommentLVAdapter
+import com.example.meetrip2.comment.CommentModel
 import com.example.meetrip2.databinding.ActivityBoardInsideBinding
 import com.example.meetrip2.utils.FBAuth
 import com.example.meetrip2.utils.FBRef
@@ -21,30 +22,57 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageException
 import com.google.firebase.storage.ktx.storage
 
 class BoardInsideActivity : AppCompatActivity() {
 
     private val TAG = BoardInsideActivity::class.java.toString()
 
-    private lateinit var binding : ActivityBoardInsideBinding
-    private lateinit var key : String
+    private lateinit var binding: ActivityBoardInsideBinding
+    private lateinit var key: String
+
+    private lateinit var commentLVadapter: CommentLVAdapter
+    private val commentDataList = mutableListOf<CommentModel>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_board_inside)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_board_inside)
 
-        binding.menuBtn.setOnClickListener(){
+        binding.menuBtn.setOnClickListener() {
             showDialog()
         }
 
         key = intent.getStringExtra("key").toString()
         getBoardData(key)
         getImageData(key)
+
+
+        binding.commentBtn.setOnClickListener {
+            if (binding.commentArea.text.toString() == "") {
+                Toast.makeText(this, "댓글을 입력해 주세요", Toast.LENGTH_SHORT).show()
+            } else{
+                insertComment(key)
+            }
+        }
+
+        commentLVadapter = CommentLVAdapter(commentDataList)
+        binding.commentListView.adapter = commentLVadapter
+
+        getCommentData(key)
+
+    }
+
+    private fun insertComment(key: String){
+        val time = FBAuth.getTime()
+
+        FBRef.commentRef
+            .child(key)
+            .push()
+            .setValue(CommentModel(binding.commentArea.text.toString(), time))
+        Toast.makeText(this,"댓글 입력 완료", Toast.LENGTH_SHORT).show()
+        binding.commentArea.setText("")
     }
 
     private fun showDialog(){
@@ -63,6 +91,23 @@ class BoardInsideActivity : AppCompatActivity() {
             FBRef.boardRef.child(key).removeValue()
             finish()
         }
+    }
+    private fun getCommentData(key: String){
+        val postListener = object: ValueEventListener{
+            override fun onDataChange(dataSnapshot: DataSnapshot){
+                commentDataList.clear()
+                Log.e(TAG, "datachange")
+                for(dataModel in dataSnapshot.children){
+                    val item = dataModel.getValue(CommentModel::class.java)
+                    commentDataList.add(item!!)
+                    Log.e(TAG, commentDataList.toString())
+                }
+                commentLVadapter.notifyDataSetChanged()
+            }
+            override fun onCancelled(error: DatabaseError) {
+            }
+        }
+        FBRef.commentRef.child(key).addValueEventListener(postListener)
     }
     private fun getBoardData(key: String){
         val postListener = object: ValueEventListener{
@@ -88,7 +133,6 @@ class BoardInsideActivity : AppCompatActivity() {
             }
         }
         FBRef.boardRef.child(key).addValueEventListener(postListener)
-
     }
     private fun getImageData(key: String){
         //이미지 경로 설정
