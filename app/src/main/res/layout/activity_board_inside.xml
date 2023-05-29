@@ -10,6 +10,7 @@
             android:id="@+id/scView"
             android:layout_width="match_parent"
             android:fillViewport="true"
+            android:layout_marginBottom="70dp"
             android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
@@ -64,7 +65,7 @@
                 android:text="content"
                 android:layout_margin="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"/>
+                android:layout_height="wrap_content"/>
             <ImageView
                 android:id="@+id/getImageArea"
                 android:visibility="gone"
