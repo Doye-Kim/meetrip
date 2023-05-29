@@ -15,6 +15,8 @@ class FBRef {
 
         val recommendRef = database.getReference("recommend")
 
+        val recommend2Ref = database.getReference("ex")
+
 
         val commentRef = database.getReference("comment")
 
