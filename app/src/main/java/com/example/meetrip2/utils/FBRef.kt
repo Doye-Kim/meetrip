@@ -13,7 +13,8 @@ class FBRef {
 
         val boardRef = database.getReference("board")
 
-        val recommendRef = database.getReference("ex")
+        val recommendRef = database.getReference("recommend")
+
 
         val commentRef = database.getReference("comment")
 

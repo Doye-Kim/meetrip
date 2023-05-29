@@ -2,7 +2,6 @@ package com.example.meetrip2
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,24 +9,31 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.meetrip2.databinding.FragmentRecommendBinding
-import com.example.meetrip2.reccomend.Signgu
+import com.example.meetrip2.reccomend.RecommendModel
+import com.example.meetrip2.reccomend.TravelerCount
 import com.example.meetrip2.recommend_test.RecommendContentActivity
+import com.example.meetrip2.utils.FBRef
 import com.google.firebase.database.DatabaseReference
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonParser
 import okhttp3.*
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
+import java.util.*
+import kotlin.collections.HashMap
+import kotlin.collections.LinkedHashMap
+import java.lang.Thread as Thread1
 
 var tt = ""
 class RecommendFragment : Fragment() {
     private lateinit var binding : FragmentRecommendBinding
     lateinit var myRef : DatabaseReference
-    var arrList_items: ArrayList<Signgu> = ArrayList()
-    var size = 0
-
+    val size = 123
+    //map key: 코드, value: 시군구 이름
+    var codeMap = HashMap<String, String>()
+    //map key: 추정 여행자 수, value: 시군구 이름
+    var travelerMap = HashMap<Int, String>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,7 +42,7 @@ class RecommendFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_recommend, container, false)
 
-        binding.testBtn.setOnClickListener{
+        binding.testBtn.setOnClickListener {
             val intent = Intent(context, RecommendContentActivity::class.java)
             startActivity(intent)
         }
@@ -44,66 +50,82 @@ class RecommendFragment : Fragment() {
         val appkey = "appkey=e8wHh2tya84M88aReEpXCa5XTQf3xgo01aZG39k5"
         val type = "&type=sig"
 
-//        val request = Request.Builder()
-//            .url("https://apis.openapi.sk.com/puzzle/travel?"+appkey+type)
-//            .get()
-//            .addHeader("accept", "application/json")
-//            .build()
-//
-//        val response = client.newCall(request).enqueue(object : Callback {
-//            override fun onFailure(call: Call, e: IOException) {
-//                Toast.makeText(context, "불러오는 데에 실패했습니다.", Toast.LENGTH_SHORT).show()
-//            }
-//            override fun onResponse(call: Call, response: Response) {
-//                Thread{
-//                    var str = response.body?.string()
-//                    val jsonobj: JSONObject = JSONObject(str)
-//                    Log.d("obj", jsonobj.toString())
-//
-//                    var json_array: JSONArray = jsonobj.getJSONArray("contents")
-//                    size = json_array.length()
-//
-//                    for (i in 0.. size-1){
-//                        var json_objdetail: JSONObject = json_array.getJSONObject(i)
-//                        var codes: Signgu = Signgu(
-//                            json_objdetail.getString("districtCode"),
-//                            json_objdetail.getString("districtName"),
-//                        )
-//                        arrList_items.add(codes!!)
-//                    }
-//                }.start()
-//            }
-//        })
-        val request1 = Request.Builder()
-            .url("https://apis.openapi.sk.com/puzzle/traveler-count/raw/monthly/districts/5011000000?"+appkey)
+        val request = Request.Builder()
+            .url("https://apis.openapi.sk.com/puzzle/travel?" + appkey + type)
             .get()
             .addHeader("accept", "application/json")
             .build()
 
-        val response1 = client.newCall(request1).enqueue(object : Callback {
+        val response = client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 Toast.makeText(context, "불러오는 데에 실패했습니다.", Toast.LENGTH_SHORT).show()
             }
+
             override fun onResponse(call: Call, response: Response) {
-                Thread{
+                val thread0 = Thread1 {
                     var str = response.body?.string()
                     val jsonobj: JSONObject = JSONObject(str)
-                    Log.d("obj", jsonobj.toString())
 
-//                    var json_array: JSONArray = jsonobj.getJSONArray("contents")
-//                    size = json_array.length()
-//
-//                    for (i in 0.. size-1){
-//                        var json_objdetail: JSONObject = json_array.getJSONObject(i)
-//                        var codes: Signgu = Signgu(
-//                            json_objdetail.getString("districtCode"),
-//                            json_objdetail.getString("districtName"),
-//                        )
-//                    }
-                }.start()
+                    var json_array: JSONArray = jsonobj.getJSONArray("contents")
+
+                    for (i in 0..size - 1) {
+                        var json_objdetail: JSONObject = json_array.getJSONObject(i)
+                        codeMap.put(
+                            json_objdetail.getString("districtCode"),
+                            json_objdetail.getString("districtName")
+                        )
+                    }
+                }
+                thread0.start()
+                thread0.join()
             }
         })
+        Thread1.sleep(500)
+//        for ((key, value) in codeMap) {
+//            Log.d("?", key)
+//        }
+        for ((key, value) in codeMap) {
+            val request1 = Request.Builder()
+                .url("https://apis.openapi.sk.com/puzzle/traveler-count/raw/monthly/districts/"+key+"?" + appkey)
+                .get()
+                .addHeader("accept", "application/json")
+                .build()
 
+            val response1 = client.newCall(request1).enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    Toast.makeText(context, "불러오는 데에 실패했습니다.", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    val thread1 = Thread1 {
+                        val gson = GsonBuilder().create()
+                        val parser = JsonParser()
+
+                        var str = response.body?.string()
+
+                        val rootObj = parser.parse(str)
+                            .getAsJsonObject().get("contents")
+                        if(rootObj != null) {
+                            val traveler = gson.fromJson(rootObj, TravelerCount::class.java)
+                            travelerMap.put(traveler.raw?.travelerCount!!, traveler.districtName)
+                        }
+                    }
+                    thread1.start()
+                    thread1.join()
+                }
+            })
+        }
+        Thread1.sleep(500)
+        println(travelerMap)
+
+        val sortedMap = travelerMap.toSortedMap(compareBy<Int> { it }.reversed())
+        println(sortedMap)
+
+        for ((key, value) in sortedMap) {
+            FBRef.recommendRef
+                .push()
+                .setValue(RecommendModel(key, value))
+        }
         return binding.root
     }
 
