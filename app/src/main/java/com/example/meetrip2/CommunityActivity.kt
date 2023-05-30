@@ -1,16 +1,16 @@
 package com.example.meetrip2
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.example.meetrip2.board.BoardInsideActivity
 import com.example.meetrip2.board.BoardListLVAdapter
 import com.example.meetrip2.board.BoardModel
 import com.example.meetrip2.board.BoardWriteActivity
 import com.example.meetrip2.databinding.ActivityCommunityBinding
-import com.example.meetrip2.utils.FBAuth
 import com.example.meetrip2.utils.FBRef
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -19,6 +19,7 @@ import com.google.firebase.database.ValueEventListener
 
 class CommunityActivity : AppCompatActivity() {
     private lateinit var binding : ActivityCommunityBinding
+
     private val boardDataList = mutableListOf<BoardModel>()
     private val TAG = CommunityActivity::class.java.toString()
     private val boardKeyList = mutableListOf<String>()
@@ -40,6 +41,7 @@ class CommunityActivity : AppCompatActivity() {
 //            startActivity(intent)
 
             val intent = Intent(this, BoardInsideActivity::class.java)
+
             intent.putExtra("key", boardKeyList[position])
             startActivity(intent)
         }
@@ -56,7 +58,7 @@ class CommunityActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 boardDataList.clear()
                 boardKeyList.clear()
-                for(dataModel in dataSnapshot.children){
+                for (dataModel in dataSnapshot.children) {
                     val item = dataModel.getValue(BoardModel::class.java)
                     boardDataList.add(item!!)
                     boardKeyList.add(dataModel.key.toString())
@@ -64,6 +66,7 @@ class CommunityActivity : AppCompatActivity() {
                 }
                 boardKeyList.reverse()
                 boardDataList.reverse()
+
                 boardLVadapter.notifyDataSetChanged()
             }
 

@@ -42,7 +42,6 @@ class RecommendFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_recommend, container, false)
-
         binding.testBtn.setOnClickListener {
             val intent = Intent(context, RecommendContentActivity::class.java)
             startActivity(intent)

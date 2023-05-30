@@ -25,11 +25,11 @@ class CommentLVAdapter(val commentList : MutableList<CommentModel>) : BaseAdapte
         if(cvView == null){
             cvView = LayoutInflater.from(parent?.context).inflate(R.layout.comment_list_item, parent,false)
         }
+
         val comment = cvView!!.findViewById<TextView>(R.id.commentArea)
         comment.text = commentList[position].comment
         val time = cvView!!.findViewById<TextView>(R.id.timeArea)
         time!!.text = commentList[position].time
-
 
         return cvView!!
     }

@@ -3,14 +3,16 @@
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
+        android:id="@+id/community_layout"
         android:layout_height="match_parent"
         tools:context=".RecommendFragment">
         <RelativeLayout
-            android:id="@+id/title"
+            android:id="@+id/logotop"
             android:background="@color/mainDeep"
             android:layout_width="match_parent"
             android:layout_height="55dp">
             <TextView
+                android:id="@+id/testt"
                 android:text="meetrip"
                 android:textSize="30dp"
                 android:textColor="@color/black"
@@ -41,7 +43,7 @@
         </RelativeLayout>
         <ListView
             android:id="@+id/boardListView"
-            android:layout_below="@+id/title"
+            android:layout_below="@+id/logotop"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
         <LinearLayout

@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import com.example.meetrip2.HomeFragment
 import com.example.meetrip2.R
 import com.example.meetrip2.databinding.ActivityBoardWriteBinding
 import com.example.meetrip2.utils.FBAuth
@@ -50,6 +51,12 @@ class BoardWriteActivity : AppCompatActivity() {
                 if(isImageUpload == true) {
                     imageUpload(key)
                 }
+                val fragmentHome = HomeFragment()
+                val bundle = Bundle()
+
+                bundle.putString("key", key)
+
+                fragmentHome.setArguments(bundle)
                 finish()
             }
         }

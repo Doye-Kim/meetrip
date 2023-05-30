@@ -62,7 +62,6 @@ class ContentsRVAdapter(val context : Context,
                 bookmarkArea.setImageResource(R.drawable.bookmark3)
             }
             bookmarkArea.setOnClickListener{
-                Log.d("ContentsRVAdapter", FBAuth.getUid())
                 Toast.makeText(context, key, Toast.LENGTH_LONG).show()
                 if(bookmarkIdList.contains(key)){ //이미 북마크 되어 있을 때
                     FBRef.bookmarkRef

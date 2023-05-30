@@ -4,5 +4,6 @@ data class BoardModel(
     var title: String = "",
     var content: String = "",
     var uid: String = "",
-    var time: String = ""
+    var time: String = "",
+    var ccount: Int = 0
     )

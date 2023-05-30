@@ -28,6 +28,7 @@
         android:id="@+id/timeArea"
         android:text="time"
         android:textSize="10sp"
+        android:layout_gravity="end"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="10dp"
         android:layout_width="wrap_content"

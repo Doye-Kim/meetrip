@@ -41,13 +41,11 @@ class ContentsListActivity : AppCompatActivity() {
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for(dataModel in dataSnapshot.children){
-                    Log.d("ContentsListActivity", dataSnapshot.toString())
                     val item = dataModel.getValue(ContentsModel::class.java)
                     items.add(item!!)
                     itemKeyList.add(dataModel.key.toString())
                 }
                 rvAdapter.notifyDataSetChanged() //데이터를 불러오는 동안 rv가 생성되면 rv에 데이터가 들어가지 않기 때문에 여기서 리프레시 함
-                Log.d("ContentsListActivity", items.toString())
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -71,7 +69,6 @@ class ContentsListActivity : AppCompatActivity() {
                 for(dataModel in dataSnapshot.children){
                     bookmarkIdList.add(dataModel.key.toString())
                 }
-                Log.d("ContentsListActivitybookmarklist", bookmarkIdList.toString())
                 rvAdapter.notifyDataSetChanged()
             }
 

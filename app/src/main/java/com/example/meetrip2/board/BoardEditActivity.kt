@@ -78,7 +78,7 @@ class BoardEditActivity : AppCompatActivity() {
         val title = binding.titleArea.text.toString()
         val content = binding.contentArea.text.toString()
         val uid = FBAuth.getUid()
-        val time = FBAuth.getTime()
+        val time = FBAuth.getTime() + "(수정됨)"
 
         if(title == ""){
             Toast.makeText(this,"제목을 입력해 주세요", Toast.LENGTH_LONG).show()

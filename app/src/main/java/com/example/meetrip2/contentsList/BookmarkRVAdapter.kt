@@ -65,7 +65,6 @@ class BookmarkRVAdapter(val context : Context,
                 bookmarkArea.setImageResource(R.drawable.bookmarkfill)
             }
            bookmarkArea.setOnClickListener {
-                Log.d("BookmarkRVAdapter", FBAuth.getUid())
                 Toast.makeText(context, key, Toast.LENGTH_LONG).show()
                     FBRef.bookmarkRef
                         .child(FBAuth.getUid())
