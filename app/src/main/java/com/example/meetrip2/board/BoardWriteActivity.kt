@@ -51,12 +51,7 @@ class BoardWriteActivity : AppCompatActivity() {
                 if(isImageUpload == true) {
                     imageUpload(key)
                 }
-                val fragmentHome = HomeFragment()
-                val bundle = Bundle()
 
-                bundle.putString("key", key)
-
-                fragmentHome.setArguments(bundle)
                 finish()
             }
         }

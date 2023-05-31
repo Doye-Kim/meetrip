@@ -7,8 +7,6 @@
         tools:context=".recommend_test.ResultFragment"
         android:background="@color/mainColor">
 
-        <!-- TODO: Update blank fragment layout -->
-
 
         <LinearLayout
             android:layout_width="match_parent"

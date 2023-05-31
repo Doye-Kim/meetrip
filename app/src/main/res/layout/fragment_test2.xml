@@ -1,46 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout >
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".recommend_test.Test2Fragment"
-        android:background="@color/mainColor">
+        tools:context=".recommend_test.Test1Fragment"
+        android:background="@color/mainColor"
+        android:orientation="vertical">
 
-        <!-- TODO: Update blank fragment layout -->
 
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="TEST 2"
+            android:textStyle="bold"
+            android:textSize="50sp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="50dp">
+            android:layout_marginTop="70dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="test2"
-                android:textSize="50sp"/>
-
-            <Button
+            <ImageView
+                android:src="@drawable/muk"
                 android:id="@+id/mukBtn"
-                android:text="맛집탐방"
-                android:textSize="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="170dp"
-                android:layout_marginHorizontal="40dp"
-                android:layout_marginVertical="10dp"/>
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:text="맛집 탐방"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-            <Button
+            <ImageView
+                android:layout_marginTop="30dp"
+                android:src="@drawable/place"
                 android:id="@+id/placeBtn"
-                android:text="관광명소"
-                android:textSize="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="170dp"
-                android:layout_marginHorizontal="40dp"
-                android:layout_marginVertical="10dp"/>
-
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:text="관광 명소"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
-    </FrameLayout>
+    </LinearLayout>
 </layout>
