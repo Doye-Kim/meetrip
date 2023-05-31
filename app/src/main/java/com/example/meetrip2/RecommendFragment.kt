@@ -15,8 +15,6 @@ import com.example.meetrip2.reccomend.TravelerCount
 import com.example.meetrip2.recommend_test.RecommendContentActivity
 import com.example.meetrip2.utils.FBRef
 import com.google.firebase.database.DatabaseReference
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonParser
 import okhttp3.*
 import org.json.JSONArray
 import org.json.JSONObject

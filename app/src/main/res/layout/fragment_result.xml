@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".recommend_test.ResultFragment"
@@ -11,14 +11,38 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="80dp">
 
+            <TextView
+                android:text="추천결과"
+                android:textSize="30sp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/resultImage"
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:layout_margin="20dp"
+                android:src="@drawable/mountain_img" />
+            <TextView
+                android:id="@+id/resultPlace"
+                android:text="결과 장소"
+                android:textSize="30sp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+<!--
             <TextView
                 android:id="@+id/re1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="result"
-                android:textSize="50sp"
+                android:textSize="20sp"
                 android:gravity="center" />
 
             <TextView
@@ -26,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="result"
-                android:textSize="50sp"
+                android:textSize="20sp"
                 android:gravity="center" />
 
             <TextView
@@ -34,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="result"
-                android:textSize="50sp"
+                android:textSize="20sp"
                 android:gravity="center" />
 
             <TextView
@@ -42,8 +66,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="result"
-                android:textSize="50sp"
+                android:textSize="20sp"
                 android:gravity="center" />
+                -->
+            <Button
+                android:id="@+id/testEndBtn"
+                android:text="홈 화면으로 돌아가기"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
 
         </LinearLayout>
 
