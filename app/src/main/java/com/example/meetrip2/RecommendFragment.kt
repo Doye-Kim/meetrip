@@ -6,33 +6,37 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.meetrip2.databinding.FragmentRecommendBinding
 import com.example.meetrip2.reccomend.RecommendModel
-import com.example.meetrip2.reccomend.TravelerCount
+import com.example.meetrip2.reccomend.RecommendRVAdapter
 import com.example.meetrip2.recommend_test.RecommendContentActivity
-import com.example.meetrip2.utils.FBRef
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import okhttp3.*
-import org.json.JSONArray
-import org.json.JSONObject
-import java.io.IOException
 import java.util.*
-import kotlin.collections.HashMap
-import kotlin.collections.LinkedHashMap
-import java.lang.Thread as Thread1
+
 
 var tt = ""
 class RecommendFragment : Fragment() {
     private lateinit var binding : FragmentRecommendBinding
     lateinit var myRef : DatabaseReference
-    val size = 123
-    //map key: 코드, value: 시군구 이름
-    var codeMap = HashMap<String, String>()
-    //map key: 추정 여행자 수, value: 시군구 이름
-    var travelerMap = HashMap<Int, String>()
+    lateinit var rvAdapter: RecommendRVAdapter
+    val items = ArrayList<RecommendModel>()
+
+
+//    //map key: 코드, value: 시군구 이름
+//    var codeMap = HashMap<String, String>()
+//    //map key: 추정 여행자 수, value: 시군구 이름
+//    var travelerMap = HashMap<Int, String>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,14 +44,42 @@ class RecommendFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_recommend, container, false)
+
         binding.testBtn.setOnClickListener {
             val intent = Intent(context, RecommendContentActivity::class.java)
             startActivity(intent)
         }
-        FBRef.recommend2Ref.child("photo").get().addOnSuccessListener {
-            Log.i("firebase", "Got value ${it.value}")}
-        FBRef.recommend2Ref.child("place").get().addOnSuccessListener {
-            Log.i("firebase", "Got value ${it.value}")}
+//        FBRef.recommend2Ref.child("photo").get().addOnSuccessListener {
+//            Log.i("firebase", "Got value ${it.value}")}
+//        FBRef.recommend2Ref.child("place").get().addOnSuccessListener {
+//            Log.i("firebase", "Got value ${it.value}")}
+
+        val database = Firebase.database
+        myRef = database.getReference("ex")
+        rvAdapter = RecommendRVAdapter(requireContext(), items)
+
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for(dataModel in dataSnapshot.children){
+                    val item = dataModel.getValue(RecommendModel::class.java)
+                    items.add(item!!)
+                }
+                rvAdapter.notifyDataSetChanged() //데이터를 불러오는 동안 rv가 생성되면 rv에 데이터가 들어가지 않기 때문에 여기서 리프레시 함
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w("ContentsListActivity", "Failed to read value.", error.toException())
+            }
+        })
+        //Log.d("items", items.toString())
+        val rv : RecyclerView = binding.recommendRV
+
+        rv.adapter = rvAdapter
+        //rv.layoutManager = GridLayoutManager(context, 2)
+        rv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
+
+
 //        Log.d("test",FBRef.bookmarkRef.get().toString())
 //        Log.d("photo",FBRef.recommend2Ref.child("photo").toString())
 //        val client = OkHttpClient()
